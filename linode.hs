@@ -22,6 +22,23 @@ apiRoot = "https://api.alpha.linode.com/v4"
 getToken :: IO String
 getToken = System.Environment.getEnv "LINODE_TOKEN"
 
+getData :: Data.Aeson.FromJSON a => String -> IO (Data.Maybe.Maybe a)
+getData endpoint = do
+  token <- getToken
+  let authorizationValue :: S.ByteString =
+        Data.ByteString.Char8.pack
+        $ Text.Printf.printf "token %s" token
+  let request =
+        addRequestHeader "Authorization" authorizationValue
+        $ parseRequest_ (Text.Printf.printf "GET %s%s" apiRoot endpoint)
+  response <- httpJSON request
+  return $ getResponseBody response
+
+getSingle :: Data.Aeson.FromJSON a => String -> String -> IO (Data.Maybe.Maybe a)
+getSingle endpoint id = do
+  let url :: String = Text.Printf.printf "%s/%s" endpoint id
+  getData url
+
 data Datacenter = Datacenter { id :: String,
                                datacenter :: String,
                                label :: String } deriving (Show, GHC.Generics.Generic)
@@ -37,20 +54,11 @@ data Datacenters = Datacenters { total_pages :: Int,
 instance Data.Aeson.FromJSON Datacenters
 instance Data.Aeson.ToJSON Datacenters
 
-getData :: Data.Aeson.FromJSON a => String -> IO (Data.Maybe.Maybe a)
-getData endpoint = do
-  token <- getToken
-  let authorizationValue :: S.ByteString =
-        Data.ByteString.Char8.pack
-        $ Text.Printf.printf "token %s" token
-  let request =
-        addRequestHeader "Authorization" authorizationValue
-        $ parseRequest_ (Text.Printf.printf "GET %s%s" apiRoot endpoint)
-  response <- httpJSON request
-  return (getResponseBody response)
-
 getDatacenters :: IO (Data.Maybe.Maybe Datacenters)
 getDatacenters = getData "/datacenters"
+
+getDatacenter :: String -> IO (Data.Maybe.Maybe Datacenter)
+getDatacenter id = getSingle "/datacenters" id
 
 data Distribution = Distribution { id :: String,
                                    created :: String,
@@ -73,6 +81,9 @@ instance Data.Aeson.ToJSON Distributions
 
 getDistributions :: IO (Data.Maybe.Maybe Distributions)
 getDistributions = getData "/distributions"
+
+getDistribution :: String -> IO (Data.Maybe.Maybe Distribution)
+getDistribution id = getSingle "/distributions" id
 
 data LinodeAlert = LinodeAlert { enabled :: Bool,
                                  threshold :: Int } deriving (Show, GHC.Generics.Generic)
@@ -168,6 +179,9 @@ instance Data.Aeson.ToJSON Linodes
 getLinodes :: IO (Data.Maybe.Maybe Linodes)
 getLinodes = getData "/linodes"
 
+getLinode :: String -> IO (Data.Maybe.Maybe Linode)
+getLinode id = getSingle "/linodes" id
+
 data Service = Service { id :: String,
                          storage :: Int,
                          hourly_price :: Int,
@@ -214,6 +228,9 @@ instance Data.Aeson.ToJSON Services
 getServices :: IO (Data.Maybe.Maybe Services)
 getServices = getData "/services"
 
+getService :: String -> IO (Data.Maybe.Maybe Service)
+getService id = getSingle "/services" id
+
 data DNSZone = DNSZone { id :: String,
                          dnszone :: String,
                          soa_email :: String,
@@ -241,6 +258,9 @@ instance Data.Aeson.ToJSON DNSZones
 getDNSZones :: IO (Data.Maybe.Maybe DNSZones)
 getDNSZones = getData "/dnszones"
 
+getDNSZone :: String -> IO (Data.Maybe.Maybe DNSZone)
+getDNSZone id = getSingle "/dnszones" id
+
 data Kernel = Kernel { id :: String,
                        created :: String,
                        deprecated :: Bool,
@@ -264,8 +284,15 @@ instance Data.Aeson.ToJSON Kernels
 getKernels :: IO (Data.Maybe.Maybe Kernels)
 getKernels = getData "/kernels"
 
+getKernel :: String -> IO (Data.Maybe.Maybe Kernel)
+getKernel id = getSingle "/kernels" id
+
 main = do
-  response <- getLinodes
-  case response of
+  linodes <- getLinodes
+  _ <- case linodes of
+    Just v -> print $ show v
+    Nothing -> print "Error"
+  linode <- getLinode "sdfasdf"
+  case linode of
     Just v -> print $ show v
     Nothing -> print "Error"
