@@ -4,7 +4,7 @@ This is a Haskell wrapper around the [Linode v4 API](https://developers.linode.c
 
 # Setup
 
-Instance the Haskell platform. You will also need http-conduit:
+Install the [Haskell platform](https://www.haskell.org/platform/). You will also need http-conduit:
 
 ```bash
 $ cabal install http-conduit
