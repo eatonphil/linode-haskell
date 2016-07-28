@@ -19,7 +19,7 @@ $ ghc linode.hs
 $ LINODE_TOKEN=my-token ./linode
 ```
 
-# API Documentation
+## API Documentation
 
 Although documentation for the Haskell wrapper does not yet exist,
 feel free to look through the alpha API [documentation](https://developers.linode.com/reference/)
