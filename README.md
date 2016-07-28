@@ -4,7 +4,7 @@ This is a Haskell wrapper around the [Linode v4 API](https://developers.linode.c
 You will need an alpha account and a personal access token. You can get those
 at [login.alpha.linode.com](https://login.alpha.linode.com).
 
-# Setup
+## Setup
 
 Install the [Haskell platform](https://www.haskell.org/platform/). You will also need http-conduit:
 
@@ -12,7 +12,7 @@ Install the [Haskell platform](https://www.haskell.org/platform/). You will also
 $ cabal install http-conduit
 ```
 
-$ Compile and run
+## Compile and run
 
 ```
 $ ghc linode.hs
