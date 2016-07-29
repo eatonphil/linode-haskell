@@ -1,7 +1,7 @@
 .PHONY: all clean
 
 all: *.hs
-	ghc Linode.hs
+	ghc request.hs response.hs api.hs linode.hs
 
 clean:
-	rm *.hi *.o Linode
+	rm *.hi *.o linode

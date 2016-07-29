@@ -7,7 +7,7 @@ module Response where
 
 import Data.Aeson
 import qualified GHC.Generics (Generic)
-import qualified Data.Maybe (Maybe)
+import qualified Data.Maybe as M (Maybe)
 
 data Datacenter = Datacenter { id :: String,
                                datacenter :: String,
@@ -47,12 +47,12 @@ data Service = Service { id :: String,
                          storage :: Int,
                          hourly_price :: Int,
                          label :: String,
-                         mbits_out :: Data.Maybe.Maybe Int,
+                         mbits_out :: M.Maybe Int,
                          monthly_price :: Int,
                          ram :: Int,
                          service_type :: String,
                          transfer :: Int,
-                         vcpus :: Data.Maybe.Maybe Int } deriving (Eq, Show, GHC.Generics.Generic)
+                         vcpus :: M.Maybe Int } deriving (Eq, Show, GHC.Generics.Generic)
 
 
 instance Data.Aeson.FromJSON Service
@@ -127,15 +127,15 @@ data LinodeAlerts = LinodeAlerts { cpu :: LinodeAlert,
 instance Data.Aeson.FromJSON LinodeAlerts
 instance Data.Aeson.ToJSON LinodeAlerts
 
-data LinodeBackupsSchedule = LinodeBackupsSchedule { day :: Data.Maybe.Maybe String,
-                                                     window :: Data.Maybe.Maybe String } deriving (Eq, Show, GHC.Generics.Generic)
+data LinodeBackupsSchedule = LinodeBackupsSchedule { day :: M.Maybe String,
+                                                     window :: M.Maybe String } deriving (Eq, Show, GHC.Generics.Generic)
 
 instance Data.Aeson.FromJSON LinodeBackupsSchedule
 instance Data.Aeson.ToJSON LinodeBackupsSchedule
 
 data LinodeBackups = LinodeBackups { enabled :: Bool,
                                      schedule :: LinodeBackupsSchedule,
-                                     last_backup :: Data.Maybe.Maybe String } deriving (Eq, Show, GHC.Generics.Generic)
+                                     last_backup :: M.Maybe String } deriving (Eq, Show, GHC.Generics.Generic)
 
 instance Data.Aeson.FromJSON LinodeBackups
 instance Data.Aeson.ToJSON LinodeBackups
@@ -164,7 +164,7 @@ data Linode = Linode { id :: String,
                        backups :: LinodeBackups,
                        created :: String,
                        datacenter :: Datacenter,
-                       distribution :: Data.Maybe.Maybe Distribution,
+                       distribution :: M.Maybe Distribution,
                        group :: String,
                        ip_addresses :: LinodeIPAddresses,
                        label :: String,
@@ -243,14 +243,14 @@ data Disks = Disks { total_pages :: Int,
 instance Data.Aeson.FromJSON Disks
 instance Data.Aeson.ToJSON Disks
 
-data ConfigDisks = ConfigDisks { sda :: Data.Maybe.Maybe Disk,
-                                 sdb :: Data.Maybe.Maybe Disk,
-                                 sdc :: Data.Maybe.Maybe Disk,
-                                 sdd :: Data.Maybe.Maybe Disk,
-                                 sde :: Data.Maybe.Maybe Disk,
-                                 sdf :: Data.Maybe.Maybe Disk,
-                                 sdg :: Data.Maybe.Maybe Disk,
-                                 sdh :: Data.Maybe.Maybe Disk } deriving (Eq, Show, GHC.Generics.Generic)
+data ConfigDisks = ConfigDisks { sda :: M.Maybe Disk,
+                                 sdb :: M.Maybe Disk,
+                                 sdc :: M.Maybe Disk,
+                                 sdd :: M.Maybe Disk,
+                                 sde :: M.Maybe Disk,
+                                 sdf :: M.Maybe Disk,
+                                 sdg :: M.Maybe Disk,
+                                 sdh :: M.Maybe Disk } deriving (Eq, Show, GHC.Generics.Generic)
 
 instance Data.Aeson.FromJSON ConfigDisks
 instance Data.Aeson.ToJSON ConfigDisks
@@ -271,7 +271,7 @@ data Config = Config { id :: String,
                        helpers :: ConfigHelpers,
                        kernel :: Kernel,
                        label :: String,
-                       ram_limit :: Data.Maybe.Maybe Int,
+                       ram_limit :: M.Maybe Int,
                        root_device :: String,
                        root_device_ro :: Bool,
                        run_level :: String,

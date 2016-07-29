@@ -91,6 +91,9 @@ getDatacenter id = get ["/datacenters", id]
 getDistributions :: IO (Data.Maybe.Maybe Rsp.Distributions)
 getDistributions = get ["/distributions"]
 
+getDistributionsRecommended :: IO (Data.Maybe.Maybe Rsp.Distributions)
+getDistributionsRecommended = get ["/distributions/recommended"]
+
 getDistribution :: String -> IO (Data.Maybe.Maybe Rsp.Distribution)
 getDistribution id = get ["/distributions", id]
 

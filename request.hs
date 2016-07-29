@@ -9,30 +9,30 @@ import qualified Response as Rsp (Filesystem, RunLevel, VirtMode)
 
 import Data.Aeson
 import qualified GHC.Generics (Generic)
-import qualified Data.Maybe (Maybe)
+import qualified Data.Maybe as M (Maybe)
 import qualified Data.HashMap.Strict as H (HashMap)
 
 data Linode = Linode { datacenter :: String,
                        service :: String,
-                       source :: Data.Maybe.Maybe String,
-                       root_pass :: Data.Maybe.Maybe String,
-                       label :: Data.Maybe.Maybe String,
-                       group :: Data.Maybe.Maybe String,
-                       stackscript :: Data.Maybe.Maybe String,
-                       stackscript_udf_responses :: Data.Maybe.Maybe (H.HashMap String String) } deriving (Eq, Show, GHC.Generics.Generic)
+                       source :: M.Maybe String,
+                       root_pass :: M.Maybe String,
+                       label :: M.Maybe String,
+                       group :: M.Maybe String,
+                       stackscript :: M.Maybe String,
+                       stackscript_udf_responses :: M.Maybe (H.HashMap String String) } deriving (Eq, Show, GHC.Generics.Generic)
 
 instance Data.Aeson.FromJSON Linode
 instance Data.Aeson.ToJSON Linode
 
 data Disk = Disk { size :: Int,
-                   distribution :: Data.Maybe.Maybe String,
-                   root_pass :: Data.Maybe.Maybe String,
-                   root_ssh_key :: Data.Maybe.Maybe String,
+                   distribution :: M.Maybe String,
+                   root_pass :: M.Maybe String,
+                   root_ssh_key :: M.Maybe String,
                    label :: String,
                    filesystem :: Rsp.Filesystem,
-                   read_only :: Data.Maybe.Maybe Bool,
-                   stackscript :: Data.Maybe.Maybe String,
-                   stackscript_udf_responses :: Data.Maybe.Maybe (H.HashMap String String) } deriving (Eq, Show, GHC.Generics.Generic)
+                   read_only :: M.Maybe Bool,
+                   stackscript :: M.Maybe String,
+                   stackscript_udf_responses :: M.Maybe (H.HashMap String String) } deriving (Eq, Show, GHC.Generics.Generic)
 
 instance Data.Aeson.FromJSON Disk
 instance Data.Aeson.ToJSON Disk
@@ -40,10 +40,10 @@ instance Data.Aeson.ToJSON Disk
 data Config = Config { kernel :: String,
                        label :: String,
                        disks :: [String],
-                       comments :: Data.Maybe.Maybe String,
-                       ram_limit :: Data.Maybe.Maybe Int,
-                       root_device_ro :: Data.Maybe.Maybe Bool,
-                       devtmpfs_automount :: Data.Maybe.Maybe Bool,
+                       comments :: M.Maybe String,
+                       ram_limit :: M.Maybe Int,
+                       root_device_ro :: M.Maybe Bool,
+                       devtmpfs_automount :: M.Maybe Bool,
                        run_level :: Rsp.RunLevel,
                        virt_mode :: Rsp.VirtMode } deriving (Eq, Show, GHC.Generics.Generic)
 

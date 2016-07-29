@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/eatonphil/linode-haskell.svg?branch=master)](https://travis-ci.org/eatonphil/linode-haskell)
+
 # linode-haskell
 
 This is a Haskell wrapper around the [Linode v4 API](https://developers.linode.com/reference/).
@@ -9,6 +11,7 @@ at [login.alpha.linode.com](https://login.alpha.linode.com).
 Install the [Haskell platform](https://www.haskell.org/platform/). You will also need http-conduit:
 
 ```bash
+$ cabal update
 $ cabal install http-conduit
 ```
 
