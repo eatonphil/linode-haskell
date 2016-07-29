@@ -5,7 +5,10 @@
 
 module Api where
 
-import qualified Request as Req (Linode)
+import qualified Request as Req (Linode,
+                                 Disk,
+                                 Config,
+                                 Config)
 import qualified Response as Rsp (Linode (id),
                                   Linodes,
                                   Service,
@@ -17,7 +20,11 @@ import qualified Response as Rsp (Linode (id),
                                   DNSZone,
                                   DNSZones,
                                   Kernel,
-                                  Kernels)
+                                  Kernels,
+                                  Disks,
+                                  Disk,
+                                  Configs,
+                                  Config)
 
 import Prelude hiding (id)
 
@@ -97,9 +104,25 @@ addLinode :: Req.Linode -> IO (Data.Maybe.Maybe Rsp.Linode)
 addLinode linode = post ["/linodes"] linode
 
 editLinode :: Rsp.Linode -> IO (Data.Maybe.Maybe Rsp.Linode)
-editLinode linode =
-  let i = Rsp.id linode in
-  put ["/linodes", i] linode
+editLinode linode = put ["/linodes", Rsp.id linode] linode
+
+getDisks :: String -> IO (Data.Maybe.Maybe Rsp.Disks)
+getDisks linodeId = get ["/linodes", linodeId, "disks"]
+
+getDisk :: String -> String -> IO (Data.Maybe.Maybe Rsp.Disk)
+getDisk linodeId diskId = get ["/linodes", linodeId, "disks", diskId]
+
+addDisk :: String -> Req.Disk -> IO (Data.Maybe.Maybe Rsp.Disk)
+addDisk linodeId disk = post ["/linodes", linodeId] disk
+
+getConfigs :: String -> IO (Data.Maybe.Maybe Rsp.Configs)
+getConfigs linodeId = get ["/linodes", linodeId, "configs"]
+
+getConfig :: String -> String -> IO (Data.Maybe.Maybe Rsp.Config)
+getConfig linodeId configId = get ["/linodes", linodeId, "configs", configId]
+
+addConfig :: String -> Req.Config -> IO (Data.Maybe.Maybe Rsp.Config)
+addConfig linodeId config = post ["/linodes", linodeId, "configs"] config
 
 getServices :: IO (Data.Maybe.Maybe Rsp.Services)
 getServices = get ["/services"]

@@ -5,7 +5,7 @@
 
 module Request where
 
-import qualified Response as Rsp (Filesystem)
+import qualified Response as Rsp (Filesystem, RunLevel, VirtMode)
 
 import Data.Aeson
 import qualified GHC.Generics (Generic)
@@ -36,3 +36,16 @@ data Disk = Disk { size :: Int,
 
 instance Data.Aeson.FromJSON Disk
 instance Data.Aeson.ToJSON Disk
+
+data Config = Config { kernel :: String,
+                       label :: String,
+                       disks :: [String],
+                       comments :: Data.Maybe.Maybe String,
+                       ram_limit :: Data.Maybe.Maybe Int,
+                       root_device_ro :: Data.Maybe.Maybe Bool,
+                       devtmpfs_automount :: Data.Maybe.Maybe Bool,
+                       run_level :: Rsp.RunLevel,
+                       virt_mode :: Rsp.VirtMode } deriving (Eq, Show, GHC.Generics.Generic)
+
+instance Data.Aeson.FromJSON Config
+instance Data.Aeson.ToJSON Config

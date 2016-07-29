@@ -323,3 +323,35 @@ data StackScripts = StackScripts { total_pages :: Int,
 
 instance Data.Aeson.FromJSON StackScripts
 instance Data.Aeson.ToJSON StackScripts
+
+data RunLevel = Default | Single | BinBash deriving (Eq, Show)
+
+instance Data.Aeson.ToJSON RunLevel where
+  toJSON o =
+    let json :: String = case o of
+          Default -> "default"
+          Single -> "single"
+          BinBash -> "binbash" in
+    Data.Aeson.object [ "run_level" .= json ]
+
+instance Data.Aeson.FromJSON RunLevel where
+  parseJSON o =
+    return $ case o of
+      "default" -> Default
+      "single" -> Single
+      "binbash" -> BinBash
+
+data VirtMode = FullVirt | ParaVirt deriving (Eq, Show)
+
+instance Data.Aeson.ToJSON VirtMode where
+  toJSON o =
+    let json :: String = case o of
+          FullVirt -> "fullvirt"
+          ParaVirt -> "paravirt" in
+    Data.Aeson.object [ "virt_mode" .= json ]
+
+instance Data.Aeson.FromJSON VirtMode where
+  parseJSON o =
+    return $ case o of
+      "fullvirt" -> FullVirt
+      "paravirt" -> ParaVirt
