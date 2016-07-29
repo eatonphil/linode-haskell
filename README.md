@@ -15,7 +15,7 @@ $ cabal install http-conduit
 ## Compile and run
 
 ```
-$ ghc linode.hs
+$ make
 $ LINODE_TOKEN=my-token ./linode
 ```
 
