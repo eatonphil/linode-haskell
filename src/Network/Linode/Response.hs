@@ -3,7 +3,7 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Response where
+module Network.Linode.Response where
 
 import Data.Aeson
 import qualified GHC.Generics (Generic)

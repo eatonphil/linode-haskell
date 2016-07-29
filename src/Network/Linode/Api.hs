@@ -3,28 +3,28 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Api where
+module Network.Linode.Api where
 
-import qualified Request as Req (Linode,
-                                 Disk,
-                                 Config,
-                                 Config)
-import qualified Response as Rsp (Linode (id),
-                                  Linodes,
-                                  Service,
-                                  Services,
-                                  Datacenter,
-                                  Datacenters,
-                                  Distribution,
-                                  Distributions,
-                                  DNSZone,
-                                  DNSZones,
-                                  Kernel,
-                                  Kernels,
-                                  Disks,
-                                  Disk,
-                                  Configs,
-                                  Config)
+import qualified Network.Linode.Request as Req (Linode,
+                                                Disk,
+                                                Config,
+                                                Config)
+import qualified Network.Linode.Response as Rsp (Linode (id),
+                                                 Linodes,
+                                                 Service,
+                                                 Services,
+                                                 Datacenter,
+                                                 Datacenters,
+                                                 Distribution,
+                                                 Distributions,
+                                                 DNSZone,
+                                                 DNSZones,
+                                                 Kernel,
+                                                 Kernels,
+                                                 Disks,
+                                                 Disk,
+                                                 Configs,
+                                                 Config)
 
 import Prelude hiding (id)
 

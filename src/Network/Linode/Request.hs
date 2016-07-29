@@ -3,9 +3,9 @@
 {-# LANGUAGE DuplicateRecordFields #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
-module Request where
+module Network.Linode.Request where
 
-import qualified Response as Rsp (Filesystem, RunLevel, VirtMode)
+import qualified Network.Linode.Response as Rsp (Filesystem, RunLevel, VirtMode)
 
 import Data.Aeson
 import qualified GHC.Generics (Generic)

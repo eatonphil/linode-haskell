@@ -5,9 +5,9 @@
 
 module Main where
 
-import qualified Api (getLinode, getLinodes, addLinode, editLinode)
-import qualified Response as Rsp (Linode (..))
-import qualified Request as Req (Linode)
+import qualified Network.Linode.Api as Api (getLinode, getLinodes, addLinode, editLinode)
+import qualified Network.Linode.Response as Rsp (Linode (..))
+import qualified Network.Linode.Request as Req (Linode)
 
 import qualified Data.Aeson (encode)
 import qualified Data.Maybe (Maybe (Just, Nothing) )

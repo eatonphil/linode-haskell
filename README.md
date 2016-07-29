@@ -8,18 +8,28 @@ at [login.alpha.linode.com](https://login.alpha.linode.com).
 
 ## Setup
 
-Install the [Haskell platform](https://www.haskell.org/platform/). You will also need http-conduit:
+Install the [Haskell platform](https://www.haskell.org/platform/).
+
+### From cabal
 
 ```bash
 $ cabal update
-$ cabal install http-conduit
+$ cabal install linode-v4
 ```
 
-## Compile and run
+### From git
+
+```bash
+$ cabal update
+$ git clone git@github.com:eatonphil/linode-haskell
+$ cabal install
+```
+
+## Example
 
 ```
-$ make
-$ LINODE_TOKEN=my-token ./linode
+$ make example
+$ LINODE_TOKEN=my-token ./example/linode
 ```
 
 ## API Documentation

@@ -1,7 +1,7 @@
-.PHONY: all clean
+.PHONY: example clean
 
-all: *.hs
-	ghc request.hs response.hs api.hs linode.hs
+example: example/linode.hs
+	ghc example/linode.hs
 
 clean:
-	rm *.hi *.o linode
+	rm example/*.hi example/*.o example/linode
