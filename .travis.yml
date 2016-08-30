@@ -12,7 +12,7 @@ before_install:
 install:
 
 script:
- - make
+ - cabal test
 
 cache:
   directories:

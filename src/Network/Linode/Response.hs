@@ -44,14 +44,14 @@ instance Data.Aeson.FromJSON Distributions
 instance Data.Aeson.ToJSON Distributions
 
 data Service = Service { id :: String,
-                         storage :: Int,
+                         storage :: Maybe Int,
                          hourly_price :: Int,
                          label :: String,
                          mbits_out :: M.Maybe Int,
                          monthly_price :: Int,
-                         ram :: Int,
+                         ram :: M.Maybe Int,
                          service_type :: String,
-                         transfer :: Int,
+                         transfer :: M.Maybe Int,
                          vcpus :: M.Maybe Int } deriving (Eq, Show, GHC.Generics.Generic)
 
 
