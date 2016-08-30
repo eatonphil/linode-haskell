@@ -7,7 +7,7 @@ before_install:
   - export PATH=$PATH:/opt/ghc/8.0.1/bin:/opt/cabal/1.24/bin:/opt/happy/1.19.5/bin
   - ghc --version
   - cabal update
-  - cabal install http-conduit
+  - cabal install
 
 install:
 
