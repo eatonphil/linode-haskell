@@ -10,7 +10,7 @@ import qualified GHC.Generics (Generic)
 import qualified Data.Maybe as M (Maybe)
 
 data Datacenter = Datacenter { id :: String,
-                               datacenter :: String,
+                               country :: String,
                                label :: String } deriving (Eq, Show, GHC.Generics.Generic)
 
 instance Data.Aeson.FromJSON Datacenter
@@ -166,7 +166,7 @@ data Linode = Linode { id :: String,
                        datacenter :: Datacenter,
                        distribution :: M.Maybe Distribution,
                        group :: String,
-                       ip_addresses :: LinodeIPAddresses,
+                       ips :: LinodeIPAddresses,
                        label :: String,
                        services :: [Service],
                        state :: String,

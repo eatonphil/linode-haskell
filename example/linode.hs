@@ -14,7 +14,7 @@ import qualified Data.Maybe (Maybe (Just, Nothing) )
 
 main = do
   linodes <- Api.getLinodes
-  _ <- case linodes of
+  case linodes of
     Just v -> print $ show v
     Nothing -> print "Error 1"
   linode <- Api.getLinode "sdfasdf"

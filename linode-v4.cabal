@@ -2,7 +2,7 @@
 -- documentation, see http://haskell.org/cabal/users-guide/
 
 name:                linode-v4
-version:             0.1.0.0
+version:             0.1.0.2
 synopsis:            Haskell wrapper for the Linode v4 API
 -- description:         
 homepage:            https://github.com/eatonphil/linode-haskell
