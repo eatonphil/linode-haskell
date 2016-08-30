@@ -5,7 +5,6 @@ before_install:
   - sudo apt-get update -q
   - sudo apt-get install -y cabal-install-1.24 happy-1.19.5 ghc-8.0.1-prof ghc-8.0.1-dyn
   - export PATH=$PATH:/opt/ghc/8.0.1/bin:/opt/cabal/1.24/bin:/opt/happy/1.19.5/bin
-  - ghc --version
   - cabal update
   - cabal install --enable-tests --only-dependencies
 

@@ -25,6 +25,13 @@ $ git clone git@github.com:eatonphil/linode-haskell
 $ cabal install
 ```
 
+## Test
+
+```bash
+$ cabal install --enable-tests --only-dependencies
+$ cabal test
+```
+
 ## Example
 
 ```
