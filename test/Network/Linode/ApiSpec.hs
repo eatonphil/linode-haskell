@@ -76,22 +76,6 @@ spec = do
       services <- Api.getServices
       services `shouldBe` expectedServices
 
-  describe "getService" $ do
-    it "should return the NodeBalancer service" $ do
-      let expectedService = Just Rsp.Service {
-            label = "NodeBalancer",
-            ram = Nothing,
-            hourly_price = 3,
-            id = "balancer",
-            transfer = Nothing,
-            monthly_price = 2000,
-            service_type = "nodebalancer",
-            storage = Nothing,
-            mbits_out = Nothing,
-            vcpus = Nothing }
-      service <- Api.getService "balancer"
-      service `shouldBe` expectedService
-
     it "should return the Linode 2048 service" $ do
       let expectedService = Just Rsp.Service {
             label = "Linode 2048",

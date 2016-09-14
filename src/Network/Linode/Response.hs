@@ -133,9 +133,11 @@ data LinodeBackupsSchedule = LinodeBackupsSchedule { day :: M.Maybe String,
 instance Data.Aeson.FromJSON LinodeBackupsSchedule
 instance Data.Aeson.ToJSON LinodeBackupsSchedule
 
+
 data LinodeBackups = LinodeBackups { enabled :: Bool,
                                      schedule :: LinodeBackupsSchedule,
-                                     last_backup :: M.Maybe String } deriving (Eq, Show, GHC.Generics.Generic)
+                                     snapshot :: M.Maybe Backup,
+                                     last_backup :: M.Maybe Backup } deriving (Eq, Show, GHC.Generics.Generic)
 
 instance Data.Aeson.FromJSON LinodeBackups
 instance Data.Aeson.ToJSON LinodeBackups
@@ -159,7 +161,7 @@ data LinodeIPAddresses = LinodeIPAddresses { private :: LinodeIPAddressesPrivate
 instance Data.Aeson.FromJSON LinodeIPAddresses
 instance Data.Aeson.ToJSON LinodeIPAddresses
 
-data Linode = Linode { id :: String,
+data Linode = Linode { id :: Int,
                        alerts :: LinodeAlerts,
                        backups :: LinodeBackups,
                        created :: String,
@@ -185,10 +187,9 @@ instance Data.Aeson.FromJSON Linodes
 instance Data.Aeson.ToJSON Linodes
 
 -- Missing type field
-data Backup = Backup { id :: String,
-                       label :: String,
+data Backup = Backup { id :: Int,
+                       label :: M.Maybe String,
                        status :: String,
-                       linode_id :: String,
                        datacenter :: Datacenter,
                        created :: String,
                        updated :: String,

@@ -17,12 +17,12 @@ main = do
   case linodes of
     Just v -> print $ show v
     Nothing -> print "Error 1"
-  linode <- Api.getLinode "sdfasdf"
+  linode <- Api.getLinode "2019576"
   _ <- print $ show linode
   case linode of
     Just l -> do
       _ <- print $ Data.Aeson.encode l
-      let newL = l { Rsp.label="sdfasdf1" }
+      let newL = l { Rsp.label="xcvzxcvc22" }
       _ <- print $ Data.Aeson.encode newL
       linode <- Api.editLinode newL
       case linode of

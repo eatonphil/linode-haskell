@@ -107,7 +107,7 @@ addLinode :: Req.Linode -> IO (Data.Maybe.Maybe Rsp.Linode)
 addLinode linode = post ["/linodes"] linode
 
 editLinode :: Rsp.Linode -> IO (Data.Maybe.Maybe Rsp.Linode)
-editLinode linode = put ["/linodes", Rsp.id linode] linode
+editLinode linode = put ["/linodes", show $ Rsp.id linode] linode
 
 getDisks :: String -> IO (Data.Maybe.Maybe Rsp.Disks)
 getDisks linodeId = get ["/linodes", linodeId, "disks"]
