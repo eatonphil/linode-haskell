@@ -96,6 +96,7 @@ data Kernel = Kernel { id :: String,
                        deprecated :: Bool,
                        xen :: Bool,
                        kvm :: Bool,
+                       description :: M.Maybe String,
                        label :: String,
                        version :: String,
                        x64 :: Bool } deriving (Eq, Show, GHC.Generics.Generic)
