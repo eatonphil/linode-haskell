@@ -469,13 +469,13 @@ spec = do
         description = Nothing,
         version = "4.0.1",
         x64 = True,
-        id = "linode/latest_64",
+        id = "linode/4.0.1-x86_64-linode55",
         label = "4.0.1-x86_64-linode55",
         created = "2015-05-04T09:43:23",
         deprecated = False,
         xen = False
       }
-      kernel <- Api.getKernel "linode/4.1.5-x86-linode80"
+      kernel <- Api.getKernel "linode/4.0.1-x86_64-linode55"
       kernel `shouldBe` expectedKernel
 
   describe "getGrub2Kernel" $ do
@@ -547,27 +547,15 @@ spec = do
       let expectedServices = Just Rsp.Services {
             page = 1,
             total_pages = 1,
-            total_results = 2,
+            total_results = 1,
             services = [ Rsp.Service {
-                           label = "NodeBalancer",
-                           ram = Nothing,
-                           hourly_price = 3,
-                           id = "balancer",
-                           transfer = Nothing,
-                           monthly_price = 2000,
-                           service_type = "nodebalancer",
-                           storage = Nothing,
-                           mbits_out = Nothing,
-                           vcpus = Nothing },
-                         Rsp.Service {
                            label = "Linode 2048",
                            ram = Just 2048,
                            hourly_price = 1,
                            id = "linode2048.5",
                            transfer = Just 2000,
                            monthly_price = 1000,
-                           service_type = "linode",
-                           storage = Just 24,
+                           storage = Just 24576,
                            mbits_out = Just 125,
                            vcpus = Just 1 } ] }
       services <- Api.getServices
@@ -581,8 +569,7 @@ spec = do
             id = "linode2048.5",
             transfer = Just 2000,
             monthly_price = 1000,
-            service_type = "linode",
-            storage = Just 24,
+            storage = Just 24576,
             mbits_out = Just 125,
             vcpus = Just 1 }
       service <- Api.getService "linode2048.5"

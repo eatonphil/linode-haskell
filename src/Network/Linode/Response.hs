@@ -50,7 +50,6 @@ data Service = Service { id :: String,
                          mbits_out :: M.Maybe Int,
                          monthly_price :: Int,
                          ram :: M.Maybe Int,
-                         service_type :: String,
                          transfer :: M.Maybe Int,
                          vcpus :: M.Maybe Int } deriving (Eq, Show, GHC.Generics.Generic)
 
