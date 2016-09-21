@@ -89,58 +89,59 @@ getDatacenter :: String -> IO (Data.Maybe.Maybe Rsp.Datacenter)
 getDatacenter id = get ["/datacenters", id]
 
 getDistributions :: IO (Data.Maybe.Maybe Rsp.Distributions)
-getDistributions = get ["/distributions"]
+getDistributions = get ["/linode/distributions"]
 
 getDistributionsRecommended :: IO (Data.Maybe.Maybe Rsp.Distributions)
-getDistributionsRecommended = get ["/distributions/recommended"]
+getDistributionsRecommended = get ["/linode/distributions/recommended"]
 
 getDistribution :: String -> IO (Data.Maybe.Maybe Rsp.Distribution)
-getDistribution id = get ["/distributions", id]
+getDistribution id = get ["/linode/distributions", id]
 
 getLinodes :: IO (Data.Maybe.Maybe Rsp.Linodes)
-getLinodes = get ["/linodes"]
+getLinodes = get ["/linode/instances"]
 
 getLinode :: String -> IO (Data.Maybe.Maybe Rsp.Linode)
-getLinode id = get ["/linodes", id]
+getLinode id = get ["/linode/instances", id]
 
 addLinode :: Req.Linode -> IO (Data.Maybe.Maybe Rsp.Linode)
-addLinode linode = post ["/linodes"] linode
+addLinode linode = post ["/linode/instances"] linode
 
 editLinode :: Rsp.Linode -> IO (Data.Maybe.Maybe Rsp.Linode)
-editLinode linode = put ["/linodes", show $ Rsp.id linode] linode
+editLinode linode = put ["/linode/instances", show $ Rsp.id linode] linode
 
 getDisks :: String -> IO (Data.Maybe.Maybe Rsp.Disks)
-getDisks linodeId = get ["/linodes", linodeId, "disks"]
+getDisks linodeId = get ["/linode/instances", linodeId, "disks"]
 
 getDisk :: String -> String -> IO (Data.Maybe.Maybe Rsp.Disk)
-getDisk linodeId diskId = get ["/linodes", linodeId, "disks", diskId]
+getDisk linodeId diskId = get ["/linode/instances", linodeId, "disks", diskId]
 
 addDisk :: String -> Req.Disk -> IO (Data.Maybe.Maybe Rsp.Disk)
-addDisk linodeId disk = post ["/linodes", linodeId] disk
+addDisk linodeId disk = post ["/linode/instances", linodeId] disk
 
 getConfigs :: String -> IO (Data.Maybe.Maybe Rsp.Configs)
-getConfigs linodeId = get ["/linodes", linodeId, "configs"]
+getConfigs linodeId = get ["/linode/instances", linodeId, "configs"]
 
 getConfig :: String -> String -> IO (Data.Maybe.Maybe Rsp.Config)
-getConfig linodeId configId = get ["/linodes", linodeId, "configs", configId]
+getConfig linodeId configId = get ["/linode/instances", linodeId, "configs", configId]
 
 addConfig :: String -> Req.Config -> IO (Data.Maybe.Maybe Rsp.Config)
-addConfig linodeId config = post ["/linodes", linodeId, "configs"] config
+addConfig linodeId config = post ["/linode/instances", linodeId, "configs"] config
 
+{- There are more services endpoints -}
 getServices :: IO (Data.Maybe.Maybe Rsp.Services)
-getServices = get ["/services"]
+getServices = get ["/linode/services"]
 
 getService :: String -> IO (Data.Maybe.Maybe Rsp.Service)
-getService id = get ["/services", id]
+getService id = get ["/linode/services", id]
 
 getDNSZones :: IO (Data.Maybe.Maybe Rsp.DNSZones)
-getDNSZones = get ["/dnszones"]
+getDNSZones = get ["/dns/zones"]
 
 getDNSZone :: String -> IO (Data.Maybe.Maybe Rsp.DNSZone)
-getDNSZone id = get ["/dnszones", id]
+getDNSZone id = get ["/dns/zones", id]
 
 getKernels :: IO (Data.Maybe.Maybe Rsp.Kernels)
-getKernels = get ["/kernels"]
+getKernels = get ["/linode/kernels"]
 
 getKernel :: String -> IO (Data.Maybe.Maybe Rsp.Kernel)
-getKernel id = get ["/kernels", id]
+getKernel id = get ["/linode/kernels", id]
