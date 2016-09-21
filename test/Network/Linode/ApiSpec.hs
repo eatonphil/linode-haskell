@@ -469,13 +469,13 @@ spec = do
         description = Nothing,
         version = "4.0.1",
         x64 = True,
-        id = "linode/4.0.1-x86_64-linode55",
+        id = "linode/latest_64",
         label = "4.0.1-x86_64-linode55",
         created = "2015-05-04T09:43:23",
         deprecated = False,
         xen = False
       }
-      kernel <- Api.getKernel "linode/4.0.1-x86_64-linode55"
+      kernel <- Api.getKernel "linode/latest_64"
       kernel `shouldBe` expectedKernel
 
   describe "getGrub2Kernel" $ do
