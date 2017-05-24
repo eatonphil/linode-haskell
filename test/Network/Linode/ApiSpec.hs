@@ -8,17 +8,17 @@ module Network.Linode.ApiSpec (main, spec) where
 import Test.Hspec
 
 import qualified Network.Linode.Api as Api (
-  getDatacenters,
-  getDatacenter,
+  getRegions,
+  getRegion,
   getServices,
   getService,
   getKernels,
   getKernel)
 import qualified Network.Linode.Response as Rsp (
-  Datacenters (..),
+  Regions (..),
   Kernels (..),
   Kernel (..),
-  Datacenter (..),
+  Region (..),
   Services (..),
   Service (..))
 
@@ -236,27 +236,27 @@ main = hspec spec
 
 spec :: Spec
 spec = do
-  describe "getDatacenters" $ do
-    it "should return all datacenters" $ do
-      let expectedDatacenters = Just Rsp.Datacenters {
+  describe "getRegions" $ do
+    it "should return all regions" $ do
+      let expectedRegions = Just Rsp.Regions {
             page = 1,
             total_pages = 1,
             total_results = 1,
-            datacenters = [ Rsp.Datacenter {
+            regions = [ Rsp.Region {
                               label = "Newark, NJ",
                               country = "us",
                               id = "newark" } ] }
-      datacenters <- Api.getDatacenters
-      datacenters `shouldBe` expectedDatacenters
+      regions <- Api.getRegions
+      regions `shouldBe` expectedRegions
 
-  describe "getDatacenter" $ do
-    it "should return newark datacenter" $ do
-      let expectedDatacenter = Just Rsp.Datacenter {
+  describe "getRegion" $ do
+    it "should return newark region" $ do
+      let expectedRegion = Just Rsp.Region {
             label = "Newark, NJ",
             country = "us",
             id = "newark" }
-      datacenter <- Api.getDatacenter "newark"
-      datacenter `shouldBe` expectedDatacenter
+      region <- Api.getRegion "newark"
+      region `shouldBe` expectedRegion
 
   describe "getKernels" $ do
     it "should return all kernels" $ do

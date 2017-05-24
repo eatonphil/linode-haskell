@@ -17,7 +17,7 @@ extra-source-files:  ChangeLog.md, README.md
 cabal-version:       >=1.10
 
 library
-  exposed-modules:     Network.Linode.Api, Network.Linode.Request, Network.Linode.Response
+  exposed-modules:     Network.Linode.Api, Network.Linode.Response.Regions, Network.Linode.Response.Distributions
   -- other-modules:       
   other-extensions:    OverloadedStrings, DeriveGeneric, DuplicateRecordFields, ScopedTypeVariables
   build-depends:       base >=4.9 && <4.10, aeson >=0.11 && <0.12, bytestring >=0.10 && <0.11, http-conduit >=2.2 && <2.3, unordered-containers >=0.2 && <0.3
