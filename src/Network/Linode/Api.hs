@@ -39,7 +39,7 @@ import qualified System.Environment (getEnv)
 import qualified Text.Printf (printf)
 
 apiRoot :: String
-apiRoot = "https://api.alpha.linode.com/v4"
+apiRoot = "https://api.linode.com/v4"
 
 setAuthHeader :: Network.HTTP.Simple.Request -> IO Network.HTTP.Simple.Request
 setAuthHeader request = do
