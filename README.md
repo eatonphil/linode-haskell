@@ -3,8 +3,8 @@
 # linode-haskell
 
 This is a Haskell wrapper around the [Linode v4 API](https://developers.linode.com/reference/).
-You will need an alpha account and a personal access token. You can get those
-at [login.alpha.linode.com](https://login.alpha.linode.com).
+You will need a personal access token. You can get those by logging in with your Linode Manager credentials
+at [cloud.linode.com](https://cloud.linode.com).
 
 ## Setup
 
@@ -42,5 +42,5 @@ $ LINODE_TOKEN=my-token ./example/linode
 ## API Documentation
 
 Although documentation for the Haskell wrapper does not yet exist,
-feel free to look through the alpha API [documentation](https://developers.linode.com/reference/)
+feel free to look through the API v4 [documentation](https://developers.linode.com/reference/)
 in the meantime.
